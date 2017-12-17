@@ -28,6 +28,13 @@ namespace Assemblies
 				.OfType<Assembly>()
 				.ToList();
 
+			_assemblies.ForEach(a =>
+			{
+				var location = a.GetMainPart().GetCoordinateSystem().Origin;
+				var text = a.Name;
+				_drawer.DrawText(location, text, new Color(0, 0, 0));
+			});
+
 			textBoxAssyQuantity.Text = _assemblies.Count.ToString();
 		}
 
